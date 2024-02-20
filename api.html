@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage Display</title>
+</head>
+<body>
+    <h1>Display Webpage</h1>
+    <input type="text" id="tokenInput" placeholder="Enter Token or API">
+    <button onclick="fetchAndDisplay()">Display Webpage</button>
+    <div id="webpageContent"></div>
+
+    <script>
+        function fetchAndDisplay() {
+            var token = document.getElementById('tokenInput').value;
+            var url = 'https://example.com/api/' + token; // Replace 'https://example.com/api/' with your API endpoint
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('webpageContent').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error fetching webpage:', error);
+                    document.getElementById('webpageContent').innerHTML = 'Error fetching webpage. Please try again later.';
+                });
+        }
+    </script>
+</body>
+</html>
